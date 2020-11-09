@@ -4,11 +4,12 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 
 @Data
 @Entity
 @Table(name = "theme")
-public class ThemeModel {
+public class ThemeModel implements Serializable {
 
     @Id
     @GeneratedValue

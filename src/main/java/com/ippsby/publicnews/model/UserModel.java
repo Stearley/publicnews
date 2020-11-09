@@ -3,7 +3,6 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
 
@@ -13,7 +12,7 @@ import java.io.Serializable;
 public class UserModel implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private long userId;
 
     @NotBlank
@@ -21,11 +20,9 @@ public class UserModel implements Serializable {
     private long roleId;
 
     @Column(name = "username")
-    @NotEmpty(message = "Please enter your username")
     private String username;
 
     @Column(name = "password")
-    @NotEmpty(message = "Please enter your password")
     private String password;
 
     
