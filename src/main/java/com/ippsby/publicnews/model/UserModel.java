@@ -22,8 +22,13 @@ public class UserModel implements Serializable {
     @Column(name = "username")
     private String username;
 
-    @Column(name = "password")
+    @Column(name = "password", length = 36)
     private String password;
+
+    //@PrePersist
+    //public void create(){
+      //  IfroleId = 1;
+    //}
 
     
 

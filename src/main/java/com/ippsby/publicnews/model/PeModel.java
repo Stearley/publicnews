@@ -1,6 +1,7 @@
 package com.ippsby.publicnews.model;
 
 import lombok.Data;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -12,7 +13,7 @@ import java.io.Serializable;
 public class PeModel implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private long peId;
 
     @Column(name = "name")
@@ -33,4 +34,7 @@ public class PeModel implements Serializable {
     private long newsId;
 
 
+
+
 }
+

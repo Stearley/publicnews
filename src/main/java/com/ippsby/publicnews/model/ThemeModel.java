@@ -12,7 +12,7 @@ import java.io.Serializable;
 public class ThemeModel implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private long themeId;
 
     @Column(name = "theme_name")

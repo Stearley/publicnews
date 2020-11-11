@@ -14,11 +14,10 @@ import java.util.Date;
 public class NewsModel implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private long newsId;
 
     @NotBlank
-    @Column(name = "title")
     private String title;
 
     @NotBlank

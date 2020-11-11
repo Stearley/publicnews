@@ -1,15 +1,18 @@
 package com.ippsby.publicnews.controller;
 
 import com.ippsby.publicnews.model.UserModel;
-import com.ippsby.publicnews.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.ippsby.publicnews.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/users")
 public class UserController {
-    @Autowired
-    private UserRepository userRepository;
+
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
 
     @PostMapping(path="/add")
@@ -21,7 +24,7 @@ public class UserController {
         UserModel user = new UserModel();
         user.setUsername(username);
         user.setPassword(password);
-        userRepository.save(user);
+        userService.save(user);
         return "Saved";
     }
 
