@@ -13,7 +13,7 @@ public class ThemeModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private long themeId;
+    private int themeId;
 
     @Column(name = "theme_name")
     @NotBlank

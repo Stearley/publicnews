@@ -16,15 +16,11 @@ public class UserController {
 
 
     @PostMapping(path="/add")
-    public @ResponseBody
-    String addNewUser (@RequestParam String username
-            , @RequestParam String password) {
+    @ResponseBody
+    public String addNewUser () {
 
 
-        UserModel user = new UserModel();
-        user.setUsername(username);
-        user.setPassword(password);
-        userService.save(user);
+
         return "Saved";
     }
 

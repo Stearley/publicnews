@@ -13,17 +13,18 @@ public class UserModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private long userId;
+    private int userId;
 
     @NotBlank
     @Column(name = "role_id")
-    private long roleId;
+    private int roleId;
 
     @Column(name = "username")
     private String username;
 
     @Column(name = "password", length = 36)
     private String password;
+
 
     //@PrePersist
     //public void create(){

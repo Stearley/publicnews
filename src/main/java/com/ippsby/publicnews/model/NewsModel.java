@@ -15,7 +15,7 @@ public class NewsModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private long newsId;
+    private int newsId;
 
     @NotBlank
     private String title;
@@ -24,7 +24,7 @@ public class NewsModel implements Serializable {
     @Column(name = "annotation")
     private String annotation;
 
-    private long userId;
+    private int userId;
 
     private Date publicationDate;
 
