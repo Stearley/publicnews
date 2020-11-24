@@ -1,15 +1,15 @@
 package com.ippsby.publicnews.service;
 
-import com.ippsby.publicnews.model.NewsModel;
+import com.ippsby.publicnews.model.News;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
 public interface NewsService {
 
-    List<NewsModel> findAll();
+    List<News> findAll();
 
-    NewsModel save(NewsModel news);
+    News save(News news);
 
-    NewsModel delete(NewsModel newsId);
+    News delete(News newsId);
 }

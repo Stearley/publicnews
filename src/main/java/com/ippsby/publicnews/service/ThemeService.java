@@ -1,6 +1,6 @@
 package com.ippsby.publicnews.service;
 
-import com.ippsby.publicnews.model.ThemeModel;
+import com.ippsby.publicnews.model.Theme;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -8,9 +8,9 @@ import java.util.List;
 @Service
 public interface ThemeService {
 
-    ThemeModel save (ThemeModel theme);
+    Theme save (Theme theme);
 
-    List<ThemeModel> findAll();
+    List<Theme> findAll();
 
-    ThemeModel delete(ThemeModel themeId);
+    Theme delete(Theme themeId);
 }

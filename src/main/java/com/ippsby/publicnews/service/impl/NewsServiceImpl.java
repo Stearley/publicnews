@@ -1,8 +1,7 @@
 package com.ippsby.publicnews.service.impl;
 
 
-import com.ippsby.publicnews.model.NewsModel;
-import com.ippsby.publicnews.model.PeModel;
+import com.ippsby.publicnews.model.News;
 import com.ippsby.publicnews.repository.NewsRepository;
 import com.ippsby.publicnews.service.NewsService;
 import org.springframework.stereotype.Service;
@@ -19,17 +18,17 @@ public class NewsServiceImpl implements NewsService {
 
 
     @Override
-    public NewsModel save(NewsModel news) {
+    public News save(News news) {
+       return newsRepository.saveAndFlush(news);
+    }
+
+    @Override
+    public News delete(News newsId) {
         return null;
     }
 
     @Override
-    public NewsModel delete(NewsModel newsId) {
-        return null;
-    }
-
-    @Override
-    public List<NewsModel> findAll() {
+    public List<News> findAll() {
         return null;
     }
 
@@ -37,3 +36,4 @@ public class NewsServiceImpl implements NewsService {
 
 
 }
+

@@ -5,15 +5,16 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @Entity
 @Table(name = "pe")
-public class PeModel implements Serializable {
+public class Pe implements Serializable {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private int peId;
+    private long peId;
 
     @Column(name = "name")
     @NotBlank
@@ -31,10 +32,16 @@ public class PeModel implements Serializable {
     //UserModel userModel;
     //NewsModel newsModel;
 
-    private int newsId;
+    private long newsId;
 
+    @ManyToMany
+    @JoinTable(name = "peThematics",
+            joinColumns = @JoinColumn(name = "peId"),
+            inverseJoinColumns = @JoinColumn(name = "themeId"))
+            private List <Theme> themes;
 
-
+    @ManyToMany(mappedBy = "peList")
+    private List<UserModel> userModels;
 
 }
 

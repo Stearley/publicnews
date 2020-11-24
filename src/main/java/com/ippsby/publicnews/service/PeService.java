@@ -1,13 +1,13 @@
 package com.ippsby.publicnews.service;
 
-import com.ippsby.publicnews.model.PeModel;
+import com.ippsby.publicnews.model.Pe;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
 public interface PeService {
 
-    List<PeModel> findAll();
+    List<Pe> findAll();
 
-    PeModel save(PeModel peModel);
+    Pe save(Pe pe);
 }

@@ -1,7 +1,9 @@
 package com.ippsby.publicnews.controller;
 
-import com.ippsby.publicnews.model.PeModel;
+import com.ippsby.publicnews.model.Pe;
 import com.ippsby.publicnews.service.PeService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,16 +19,20 @@ public class PeController {
     }
 
     @GetMapping("/all")
-    public List<PeModel> getAllPe() {
+    public List<Pe> getAllPe() {
         return peService.findAll();
 
     }
 
-    @PostMapping("/add")
-    public @ResponseBody String addNewPe(
-            @RequestBody PeModel peModel) {
-        peService.save(peModel);
-        return "Saved";
+    @PostMapping
+    @ResponseBody
+    public ResponseEntity<Pe> addNewPE(@RequestBody Pe pe) {
+        peService.save(pe);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @GetMapping("/pe/{peId}")
+    public Pe getPeById(@PathVariable Pe peId) {
+        return peId;
+    }
 }

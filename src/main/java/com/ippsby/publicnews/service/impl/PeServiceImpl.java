@@ -1,6 +1,6 @@
 package com.ippsby.publicnews.service.impl;
 
-import com.ippsby.publicnews.model.PeModel;
+import com.ippsby.publicnews.model.Pe;
 import com.ippsby.publicnews.repository.PeRepository;
 import com.ippsby.publicnews.service.PeService;
 import org.springframework.stereotype.Service;
@@ -16,13 +16,13 @@ public class PeServiceImpl implements PeService {
 
 
     @Override
-    public List<PeModel> findAll() {
+    public List<Pe> findAll() {
         return null;
     }
 
     @Override
-    public PeModel save(PeModel peModel) {
-        return null;
+    public Pe save(Pe pe) {
+        return peRepository.saveAndFlush(pe);
     }
 
     private final PeRepository peRepository;

@@ -1,15 +1,15 @@
 package com.ippsby.publicnews.controller;
 
-import com.ippsby.publicnews.model.ThemeModel;
-import com.ippsby.publicnews.repository.ThemeRepository;
+import com.ippsby.publicnews.model.Theme;
 import com.ippsby.publicnews.service.ThemeService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 
-@Controller
+@RestController
 @RequestMapping(path = "/theme")
 public class ThemeController {
 
@@ -21,31 +21,24 @@ public class ThemeController {
     }
 
     @GetMapping("/all")
-    public List<ThemeModel> getAllTheme() {
+    public List<Theme> getAllTheme() {
         return themeService.findAll();
     }
 
-    @PostMapping("/add")
-    public @ResponseBody
-    String addNewTheme(@RequestParam long themeId
-            , @RequestParam String themeName) {
-
-
-        ThemeModel theme = new ThemeModel();
-        theme.setThemeId(themeId);
-        theme.setThemeName(themeName);
+    @PostMapping
+    @ResponseBody
+    public ResponseEntity<Theme> addNewTheme(@RequestBody Theme theme) {
         themeService.save(theme);
-        return "Saved";
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
-
     @GetMapping("/theme/{themeId}")
-    public ThemeModel getThemeById(@PathVariable ThemeModel themeId) {
+    public Theme getThemeById(@PathVariable Theme themeId) {
         return themeId;
     }
 
     @DeleteMapping("/theme/{themeId}")
-    public ResponseEntity<?> deleteThemeData(@PathVariable ThemeModel themeId) {
+    public ResponseEntity<?> deleteThemeData(@PathVariable Theme themeId) {
         themeService.delete(themeId);
         return ResponseEntity.ok().build();
     }

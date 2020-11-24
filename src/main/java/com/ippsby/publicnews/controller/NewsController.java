@@ -1,13 +1,10 @@
 package com.ippsby.publicnews.controller;
 
-import com.ippsby.publicnews.model.NewsModel;
-import com.ippsby.publicnews.model.PeModel;
-
+import com.ippsby.publicnews.model.News;
 import com.ippsby.publicnews.service.NewsService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -22,36 +19,28 @@ public class NewsController {
     }
 
     @GetMapping("/all")
-    public List<NewsModel> getAllNews() {
+    public List<News> getAllNews() {
         return newsService.findAll();
     }
 
-    @PostMapping("/add")
-    public @ResponseBody
-    String addNewNews(@RequestParam long newsId ,
-                      @RequestParam() String title ,
-                      @RequestParam(name = "qwe",required = false, defaultValue = "-1") String annotation ,
-                      @RequestParam Date publicationDate ) {
-
-        NewsModel news = new NewsModel();
-        news.setNewsId(newsId);
-        news.setTitle(title);
-        news.setAnnotation(annotation);
-        news.setPublicationDate(publicationDate);
+    @PostMapping
+    @ResponseBody
+    public ResponseEntity<News> addNewNews(@RequestBody News news) {
         newsService.save(news);
-        return "Saved";
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/news/{newsId}")
-    public NewsModel getNewsById(@PathVariable NewsModel newsId) {
+    public News getNewsById(@PathVariable News newsId) {
         return newsId;
     }
 
     @DeleteMapping("/news/{newsId}")
-    public ResponseEntity<?> deleteNewsData(@PathVariable NewsModel newsId) {
+    public ResponseEntity<?> deleteNewsData(@PathVariable News newsId) {
         newsService.delete(newsId);
         return ResponseEntity.ok().build();
     }
+
 
     //@GetMapping("/newsPe")
     //public NewsModel getNewsByIdPE(@RequestParam PeModel pe ,
@@ -60,3 +49,4 @@ public class NewsController {
         //return newsId;
     //}
 }
+

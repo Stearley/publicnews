@@ -5,18 +5,21 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @Entity
 @Table(name = "theme")
-public class ThemeModel implements Serializable {
+public class Theme implements Serializable {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private int themeId;
+    private long themeId;
 
-    @Column(name = "theme_name")
+    @Column(name = "themeName")
     @NotBlank
     private String themeName;
 
+    @ManyToMany(mappedBy = "themes")
+    private List<Pe> peList;
 }
