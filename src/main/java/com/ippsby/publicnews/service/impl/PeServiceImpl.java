@@ -17,7 +17,7 @@ public class PeServiceImpl implements PeService {
 
     @Override
     public List<Pe> findAll() {
-        return null;
+        return peRepository.findAll();
     }
 
     @Override

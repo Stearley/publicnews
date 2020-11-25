@@ -23,12 +23,12 @@ public class ThemeServiceImpl implements ThemeService {
 
     @Override
     public List<Theme> findAll() {
-        return null;
+        return themeRepository.findAll();
     }
 
     @Override
-    public Theme delete(Theme themeId) {
-        return null;
+    public void delete(Theme themeId) {
+        themeRepository.delete(themeId);
     }
 
     private final ThemeRepository themeRepository;

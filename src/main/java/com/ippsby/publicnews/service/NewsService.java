@@ -11,5 +11,5 @@ public interface NewsService {
 
     News save(News news);
 
-    News delete(News newsId);
+    void delete(News newsId);
 }

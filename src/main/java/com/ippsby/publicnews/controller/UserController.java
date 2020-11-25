@@ -25,7 +25,7 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    public UserModel createUser(@Valid @RequestBody UserModel userModel) {
+    public UserModel createUser(@Valid @RequestBody UserModel userModel)     {
         return userService.save(userModel);
     }
 
@@ -48,11 +48,11 @@ public class UserController {
         userModel.setRoleId(userData.getRoleId());
 
         UserModel updatedUserData = userService.save(userModel);
-
+       // return userService.save(userModel);
         return updatedUserData;
     }
 
-    @DeleteMapping("/users/{userId}")
+    @DeleteMapping("/{userId}")
     public ResponseEntity<?> deleteUser(@PathVariable UserModel userId) {
         userService.delete(userId);
         return ResponseEntity.ok().build();

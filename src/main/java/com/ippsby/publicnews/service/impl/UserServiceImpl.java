@@ -26,12 +26,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void delete(UserModel userId) {
+        userRepository.delete(userId);
     }
+
 
     @Override
     public List<UserModel> findAll() {
-        return null;
+        return userRepository.findAll();
     }
+
 
     private final UserRepository userRepository;
 }

@@ -12,5 +12,5 @@ public interface ThemeService {
 
     List<Theme> findAll();
 
-    Theme delete(Theme themeId);
+    void delete(Theme themeId);
 }

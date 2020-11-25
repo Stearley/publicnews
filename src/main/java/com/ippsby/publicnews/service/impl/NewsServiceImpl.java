@@ -23,13 +23,13 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
-    public News delete(News newsId) {
-        return null;
+    public void delete(News newsId) {
+        newsRepository.delete(newsId);
     }
 
     @Override
     public List<News> findAll() {
-        return null;
+        return newsRepository.findAll();
     }
 
     private final NewsRepository newsRepository;
