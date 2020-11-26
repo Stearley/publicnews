@@ -1,11 +1,13 @@
 package com.ippsby.publicnews.controller;
 
 import com.ippsby.publicnews.model.Pe;
+import com.ippsby.publicnews.model.UserModel;
 import com.ippsby.publicnews.service.PeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -18,7 +20,7 @@ public class PeController {
         this.peService = peService;
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public List<Pe> getAllPe() {
         return peService.findAll();
 
@@ -26,13 +28,23 @@ public class PeController {
 
     @PostMapping
     @ResponseBody
-    public ResponseEntity<Pe> addNewPE(@RequestBody Pe pe) {
-        peService.save(pe);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<Pe> addNewPE(@RequestBody Pe pe, HttpServletRequest request) {
+        if(Integer.parseInt(request.getHeader("Test")) > 1){
+            peService.save(pe);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
-    @GetMapping("/pe/{peId}")
+    @GetMapping("/{peId}")
     public Pe getPeById(@PathVariable Pe peId) {
         return peId;
     }
+
+    @DeleteMapping("/{peId}")
+    public ResponseEntity<?> deletePe(@PathVariable Pe peId) {
+        peService.delete(peId);
+        return ResponseEntity.ok().build();
+    }
+
 }

@@ -10,4 +10,6 @@ public interface PeService {
     List<Pe> findAll();
 
     Pe save(Pe pe);
+
+    void delete(Pe peId);
 }

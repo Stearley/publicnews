@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserModel save(UserModel user) {
-        return userRepository.saveAndFlush(user);
+        return userRepository.save(user);
     }
 
     @Override
@@ -37,4 +37,9 @@ public class UserServiceImpl implements UserService {
 
 
     private final UserRepository userRepository;
+
+    @Override
+    public UserModel login(String username, String password) {
+        return userRepository.;
+    }
 }

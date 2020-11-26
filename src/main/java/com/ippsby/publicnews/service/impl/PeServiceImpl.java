@@ -25,5 +25,11 @@ public class PeServiceImpl implements PeService {
         return peRepository.saveAndFlush(pe);
     }
 
+    @Override
+    public void delete(Pe peId) {
+        peRepository.delete(peId);
+    }
+
+
     private final PeRepository peRepository;
 }

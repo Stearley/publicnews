@@ -16,7 +16,6 @@ public class UserModel implements Serializable {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long userId;
 
-    @NotBlank
     @Column(name = "roleId")
     private long roleId;
 

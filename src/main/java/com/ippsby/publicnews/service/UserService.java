@@ -15,6 +15,8 @@ public interface UserService {
     void delete(UserModel userId);
 
     List<UserModel> findAll();
+
+    UserModel login(String username, String password);
 }
 
 

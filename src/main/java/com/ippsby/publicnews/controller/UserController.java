@@ -1,10 +1,13 @@
 package com.ippsby.publicnews.controller;
 
+import com.ippsby.publicnews.model.Theme;
 import com.ippsby.publicnews.model.UserModel;
 import com.ippsby.publicnews.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -23,21 +26,23 @@ public class UserController {
     public List<UserModel> getAllUsers() {
         return userService.findAll();
     }
-
-    @PostMapping("/create")
-    public UserModel createUser(@Valid @RequestBody UserModel userModel)     {
-        return userService.save(userModel);
-    }
+//    @GetMapping("/{userId}")
+//    public Theme getUserById(@PathVariable UserModel userId) {
+//        return userId;
+//    }
 
     @PostMapping
     @ResponseBody
-    public ResponseEntity<UserModel> addNewUser(@RequestBody UserModel userModel) {
-        userModel.setRoleId(1);
-        userService.save(userModel);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<UserModel> addNewUser(@RequestBody UserModel userModel, HttpServletRequest request) {
+        if(Integer.parseInt(request.getHeader("Test")) > 1){
+            userModel.setRoleId(1L);
+           UserModel s = userService.save(userModel);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
-    @PutMapping("/{userId}")
+    @PutMapping
     public UserModel updateUser(@PathVariable(value = "userId") Long userId,
                                 @Valid @RequestBody UserModel userData) {
 
@@ -56,6 +61,11 @@ public class UserController {
     public ResponseEntity<?> deleteUser(@PathVariable UserModel userId) {
         userService.delete(userId);
         return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/login")
+    public UserModel login(@RequestBody UserModel userModel){
+        return userService.login(userModel.getUsername(), userModel.getPassword());
     }
 }
 
