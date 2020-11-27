@@ -17,6 +17,7 @@ public interface UserService {
     List<UserModel> findAll();
 
     UserModel login(String username, String password);
+
 }
 
 

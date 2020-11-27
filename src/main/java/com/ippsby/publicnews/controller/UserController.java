@@ -1,6 +1,5 @@
 package com.ippsby.publicnews.controller;
 
-import com.ippsby.publicnews.model.Theme;
 import com.ippsby.publicnews.model.UserModel;
 import com.ippsby.publicnews.service.UserService;
 import org.springframework.http.HttpStatus;
@@ -26,10 +25,6 @@ public class UserController {
     public List<UserModel> getAllUsers() {
         return userService.findAll();
     }
-//    @GetMapping("/{userId}")
-//    public Theme getUserById(@PathVariable UserModel userId) {
-//        return userId;
-//    }
 
     @PostMapping
     @ResponseBody
@@ -52,9 +47,7 @@ public class UserController {
         userModel.setPassword(userData.getPassword());
         userModel.setRoleId(userData.getRoleId());
 
-        UserModel updatedUserData = userService.save(userModel);
-       // return userService.save(userModel);
-        return updatedUserData;
+        return userService.save(userModel);
     }
 
     @DeleteMapping("/{userId}")
@@ -63,10 +56,13 @@ public class UserController {
         return ResponseEntity.ok().build();
     }
 
+
     @PostMapping("/login")
     public UserModel login(@RequestBody UserModel userModel){
         return userService.login(userModel.getUsername(), userModel.getPassword());
     }
+
+
 }
 
 

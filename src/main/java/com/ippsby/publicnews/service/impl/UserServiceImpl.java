@@ -35,11 +35,12 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll();
     }
 
+    @Override
+    public UserModel login(String username, String password) {
+        return userRepository.getOne();
+    }
 
     private final UserRepository userRepository;
 
-    @Override
-    public UserModel login(String username, String password) {
-        return userRepository.;
-    }
+
 }
