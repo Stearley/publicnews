@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserModel login(String username, String password) {
-        return userRepository.getOne();
+        return userRepository.getByUsernameAndPassword(username, password);
     }
 
     private final UserRepository userRepository;

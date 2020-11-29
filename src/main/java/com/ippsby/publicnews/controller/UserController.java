@@ -61,8 +61,6 @@ public class UserController {
     public UserModel login(@RequestBody UserModel userModel){
         return userService.login(userModel.getUsername(), userModel.getPassword());
     }
-
-
 }
 
 

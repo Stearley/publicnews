@@ -1,8 +1,8 @@
 package com.ippsby.publicnews.model;
+
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.List;
 
@@ -19,8 +19,10 @@ public class UserModel implements Serializable {
     @Column(name = "roleId")
     private long roleId;
 
+
     @Column(name = "username")
     private String username;
+
 
     @Column(name = "password", length = 36)
         private String password;
@@ -39,7 +41,7 @@ public class UserModel implements Serializable {
 
 
 
-    
+
 
 
 
