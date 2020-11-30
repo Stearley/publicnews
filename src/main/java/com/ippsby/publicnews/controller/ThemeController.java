@@ -29,11 +29,10 @@ public class ThemeController {
     @PostMapping
     @ResponseBody
     public ResponseEntity<Theme> addNewTheme(@RequestBody Theme theme, HttpServletRequest request) {
-        if(Integer.parseInt(request.getHeader("Test")) > 1){
+        if (Integer.parseInt(request.getHeader("Test")) > 1) {
             themeService.save(theme);
             return new ResponseEntity<>(HttpStatus.OK);
-        }
-        else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        } else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
     @GetMapping("/{themeId}")
@@ -42,10 +41,14 @@ public class ThemeController {
     }
 
     @DeleteMapping("/{themeId}")
-    public ResponseEntity<?> deleteThemeData(@PathVariable Theme themeId) {
-        themeService.delete(themeId);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<?> deleteThemeData(@RequestBody Theme themeId, HttpServletRequest request) {
+        if (Integer.parseInt(request.getHeader("Test")) > 1) {
+            themeService.delete(themeId);
+            return ResponseEntity.ok().build();
+        }
+        else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 }
+
 
 

@@ -1,5 +1,7 @@
 package com.ippsby.publicnews.controller;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.ippsby.publicnews.model.Security;
 import com.ippsby.publicnews.model.UserModel;
 import com.ippsby.publicnews.service.UserService;
 import org.springframework.http.HttpStatus;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.HashSet;
 import java.util.List;
 
 @RestController
@@ -40,9 +43,7 @@ public class UserController {
     @PutMapping
     public UserModel updateUser(@PathVariable(value = "userId") Long userId,
                                 @Valid @RequestBody UserModel userData) {
-
         UserModel userModel = userService.findById(userId);
-
         userModel.setUsername(userData.getUsername());
         userModel.setPassword(userData.getPassword());
         userModel.setRoleId(userData.getRoleId());
@@ -51,16 +52,23 @@ public class UserController {
     }
 
     @DeleteMapping("/{userId}")
-    public ResponseEntity<?> deleteUser(@PathVariable UserModel userId) {
-        userService.delete(userId);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<?> deleteUser(@RequestBody UserModel userId, HttpServletRequest request) {
+        if (Integer.parseInt(request.getHeader("Test")) > 4) {
+            userService.delete(userId);
+            return ResponseEntity.ok().build();
+        }
+        else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
 
+    @JsonView(Security.Public.class)
     @PostMapping("/login")
     public UserModel login(@RequestBody UserModel userModel){
         return userService.login(userModel.getUsername(), userModel.getPassword());
     }
+
+
+
 }
 
 

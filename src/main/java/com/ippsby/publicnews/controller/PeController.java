@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashSet;
 import java.util.List;
 
 @RestController
@@ -42,9 +43,12 @@ public class PeController {
     }
 
     @DeleteMapping("/{peId}")
-    public ResponseEntity<?> deletePe(@PathVariable Pe peId) {
-        peService.delete(peId);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<?> deletePe(@RequestBody Pe peId, HttpServletRequest request) {
+        if (Integer.parseInt(request.getHeader("Test")) > 1) {
+            peService.delete(peId);
+            return ResponseEntity.ok().build();
+        }
+        else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
-
+    
 }

@@ -1,5 +1,6 @@
 package com.ippsby.publicnews.model;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -23,6 +24,7 @@ public class News implements Serializable {
     @Column(name = "annotation")
     private String annotation;
 
+    //@JsonView(Security.Local.class)
     private long userId;
 
     private Date publicationDate;

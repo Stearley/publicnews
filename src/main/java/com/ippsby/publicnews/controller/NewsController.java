@@ -41,9 +41,12 @@ public class NewsController {
     }
 
     @DeleteMapping("/{newsId}")
-    public ResponseEntity<?> deleteNewsData(@PathVariable News newsId) {
-        newsService.delete(newsId);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<?> deleteNewsData(@RequestBody News newsId, HttpServletRequest request) {
+        if (Integer.parseInt(request.getHeader("Test")) > 1) {
+            newsService.delete(newsId);
+            return ResponseEntity.ok().build();
+        }
+        else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
 
