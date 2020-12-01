@@ -41,7 +41,7 @@ public class Pe implements Serializable {
             private List <Theme> themes;
 
     @ManyToMany(mappedBy = "peList")
-    private List<UserModel> userModels;
+    private List<UserModel> userModel;
 
 }
 

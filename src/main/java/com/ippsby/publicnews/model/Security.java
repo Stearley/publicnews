@@ -4,7 +4,7 @@ public class Security {
     public static class Local {
 
     }
-    public static class Public {
+    public static class Public extends Local{
 
     }
 }

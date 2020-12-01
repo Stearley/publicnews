@@ -1,5 +1,6 @@
 package com.ippsby.publicnews.service.impl;
 
+import com.ippsby.publicnews.model.Pe;
 import com.ippsby.publicnews.model.UserModel;
 import com.ippsby.publicnews.repository.UserRepository;
 import com.ippsby.publicnews.service.UserService;
@@ -25,9 +26,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void delete(UserModel userId) {
-        userRepository.delete(userId);
+    public void delete(UserModel userData) {
+        userRepository.delete(userData);
     }
+
 
 
     @Override

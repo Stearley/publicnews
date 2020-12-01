@@ -6,11 +6,11 @@ import com.ippsby.publicnews.model.UserModel;
 import com.ippsby.publicnews.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.util.HashSet;
 import java.util.List;
 
 @RestController
@@ -40,7 +40,7 @@ public class UserController {
         else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
-    @PutMapping
+    @PutMapping("/{userId}")
     public UserModel updateUser(@PathVariable(value = "userId") Long userId,
                                 @Valid @RequestBody UserModel userData) {
         UserModel userModel = userService.findById(userId);
@@ -52,7 +52,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{userId}")
-    public ResponseEntity<?> deleteUser(@RequestBody UserModel userId, HttpServletRequest request) {
+    public ResponseEntity<?> deleteUser(@PathVariable UserModel userId, HttpServletRequest request) {
         if (Integer.parseInt(request.getHeader("Test")) > 4) {
             userService.delete(userId);
             return ResponseEntity.ok().build();
@@ -61,7 +61,7 @@ public class UserController {
     }
 
 
-    @JsonView(Security.Public.class)
+    @JsonView(Security.Local.class)
     @PostMapping("/login")
     public UserModel login(@RequestBody UserModel userModel){
         return userService.login(userModel.getUsername(), userModel.getPassword());

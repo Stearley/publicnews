@@ -41,7 +41,7 @@ public class ThemeController {
     }
 
     @DeleteMapping("/{themeId}")
-    public ResponseEntity<?> deleteThemeData(@RequestBody Theme themeId, HttpServletRequest request) {
+    public ResponseEntity<?> deleteThemeData(@PathVariable Theme themeId, HttpServletRequest request) {
         if (Integer.parseInt(request.getHeader("Test")) > 1) {
             themeService.delete(themeId);
             return ResponseEntity.ok().build();

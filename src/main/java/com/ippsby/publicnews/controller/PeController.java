@@ -1,14 +1,12 @@
 package com.ippsby.publicnews.controller;
 
 import com.ippsby.publicnews.model.Pe;
-import com.ippsby.publicnews.model.UserModel;
 import com.ippsby.publicnews.service.PeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashSet;
 import java.util.List;
 
 @RestController
@@ -43,7 +41,7 @@ public class PeController {
     }
 
     @DeleteMapping("/{peId}")
-    public ResponseEntity<?> deletePe(@RequestBody Pe peId, HttpServletRequest request) {
+    public ResponseEntity<?> deletePe(@PathVariable Pe peId, HttpServletRequest request) {
         if (Integer.parseInt(request.getHeader("Test")) > 1) {
             peService.delete(peId);
             return ResponseEntity.ok().build();
