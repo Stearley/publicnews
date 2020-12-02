@@ -48,6 +48,13 @@ public class ThemeController {
         }
         else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
+    @PutMapping
+    public ResponseEntity<?> updateTheme(@RequestBody Theme theme, HttpServletRequest request) {
+        if (Integer.parseInt(request.getHeader("Test")) > 4) {
+            return new ResponseEntity<>(themeService.save(theme), HttpStatus.OK);
+        }
+        else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+    }
 }
 
 

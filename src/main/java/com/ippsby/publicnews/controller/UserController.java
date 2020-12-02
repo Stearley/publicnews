@@ -6,11 +6,9 @@ import com.ippsby.publicnews.model.UserModel;
 import com.ippsby.publicnews.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -40,15 +38,11 @@ public class UserController {
         else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
-    @PutMapping("/{userId}")
-    public UserModel updateUser(@PathVariable(value = "userId") Long userId,
-                                @Valid @RequestBody UserModel userData) {
-        UserModel userModel = userService.findById(userId);
-        userModel.setUsername(userData.getUsername());
-        userModel.setPassword(userData.getPassword());
-        userModel.setRoleId(userData.getRoleId());
-
-        return userService.save(userModel);
+    @PutMapping
+    public ResponseEntity<?> updateUser( @RequestBody UserModel userModel, HttpServletRequest request) {
+        if (Integer.parseInt(request.getHeader("Test")) > 4) {
+            return new ResponseEntity<>(userService.save(userModel), HttpStatus.OK);
+        } else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
     @DeleteMapping("/{userId}")
@@ -59,7 +53,6 @@ public class UserController {
         }
         else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
-
 
     @JsonView(Security.Local.class)
     @PostMapping("/login")

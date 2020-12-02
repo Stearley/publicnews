@@ -1,6 +1,5 @@
 package com.ippsby.publicnews.service.impl;
 
-import com.ippsby.publicnews.model.Pe;
 import com.ippsby.publicnews.model.UserModel;
 import com.ippsby.publicnews.repository.UserRepository;
 import com.ippsby.publicnews.service.UserService;
@@ -21,16 +20,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserModel findById(Long userId) {
-        return null;
-    }
-
-    @Override
     public void delete(UserModel userData) {
         userRepository.delete(userData);
     }
-
-
 
     @Override
     public List<UserModel> findAll() {
@@ -41,6 +33,7 @@ public class UserServiceImpl implements UserService {
     public UserModel login(String username, String password) {
         return userRepository.getByUsernameAndPassword(username, password);
     }
+
 
     private final UserRepository userRepository;
 

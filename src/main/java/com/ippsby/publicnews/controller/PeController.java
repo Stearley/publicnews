@@ -1,6 +1,7 @@
 package com.ippsby.publicnews.controller;
 
 import com.ippsby.publicnews.model.Pe;
+import com.ippsby.publicnews.model.UserModel;
 import com.ippsby.publicnews.service.PeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -48,5 +49,11 @@ public class PeController {
         }
         else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
-    
+    @PutMapping
+    public ResponseEntity<?> updatePe(@RequestBody Pe pe, HttpServletRequest request) {
+        if (Integer.parseInt(request.getHeader("Test")) > 4) {
+            return new ResponseEntity<>(peService.save(pe), HttpStatus.OK);
+        }
+        else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+    }
 }

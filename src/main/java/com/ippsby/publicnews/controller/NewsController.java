@@ -50,11 +50,5 @@ public class NewsController {
     }
 
 
-    //@GetMapping("/newsPe")
-    //public NewsModel getNewsByIdPE(@RequestParam PeModel pe ,
-      //                             @RequestParam NewsModel newsId) {
-        //return pe.getNews();
-        //return newsId;
-    //}
 }
 
