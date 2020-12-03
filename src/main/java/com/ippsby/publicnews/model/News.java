@@ -32,8 +32,8 @@ public class News implements Serializable {
     @JoinColumn(name = "peId")
     private Pe pe;
 
-    @ManyToOne//связь новостей и пользователей(обратная)
-    @JoinColumn(name = "userNewsId")
-    private UserModel userModel;
+//    @ManyToOne//связь новостей и пользователей(обратная)
+//    @JoinColumn(name = "userNewsId")
+//    private UserModel userModel;
 
 }

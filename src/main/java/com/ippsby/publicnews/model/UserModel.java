@@ -30,17 +30,16 @@ public class UserModel implements Serializable {
         private String password;
 
 
-    @JsonView(Security.Public.class)
-    @OneToMany(mappedBy = "userModel")//связь пользователя и новостей
-    private List<News> news;
 
-    @JsonView(Security.Public.class)
+//    @OneToMany(mappedBy = "userModel")//связь пользователя и новостей
+//    private List<News> news;
+
+
     @ManyToMany
     @JoinTable(name = "peList",
             joinColumns = @JoinColumn(name = "userId"),
             inverseJoinColumns = @JoinColumn(name = "peId"))
     private List <Pe> peList;
-
 
 
 

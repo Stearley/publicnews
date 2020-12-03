@@ -2,6 +2,7 @@ package com.ippsby.publicnews.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.ippsby.publicnews.model.Security;
+import com.ippsby.publicnews.model.Theme;
 import com.ippsby.publicnews.model.UserModel;
 import com.ippsby.publicnews.service.UserService;
 import org.springframework.http.HttpStatus;
@@ -60,6 +61,10 @@ public class UserController {
         return userService.login(userModel.getUsername(), userModel.getPassword());
     }
 
+    @GetMapping("/{userId}")
+    public UserModel getUserById(@PathVariable UserModel userId) {
+        return userId;
+    }
 
 
 }
