@@ -28,11 +28,8 @@ public class Pe implements Serializable {
     @NotBlank
     private String description;
 
-
-    //UserModel userModel;
-    //NewsModel newsModel;
-
-    private long newsId;
+    @OneToMany(mappedBy ="pe")
+    private List<News> news;
 
     @ManyToMany
     @JoinTable(name = "peThematics",

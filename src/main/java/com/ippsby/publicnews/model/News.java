@@ -24,18 +24,13 @@ public class News implements Serializable {
     @Column(name = "annotation")
     private String annotation;
 
-    //@JsonView(Security.Local.class)
-    private long userId;
-
+    @Temporal(TemporalType.DATE)
     private Date publicationDate;
 
 
-    //@ManyToOne
-    //@JoinColumn(name = "userCreate")
-    //private UserModel userCreate;
-
-    //@JoinColumn(name = "dateCreate")
-   // private Date dateCreate;
+    @ManyToOne//связь новостей и пе(обратная)
+    @JoinColumn(name = "peId")
+    private Pe pe;
 
     @ManyToOne//связь новостей и пользователей(обратная)
     @JoinColumn(name = "userNewsId")
