@@ -1,5 +1,8 @@
 package com.ippsby.publicnews.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -35,9 +38,11 @@ public class Pe implements Serializable {
     @JoinTable(name = "peThematics",
             joinColumns = @JoinColumn(name = "peId"),
             inverseJoinColumns = @JoinColumn(name = "themeId"))
+            @JsonManagedReference
             private List <Theme> themes;
 
     @ManyToMany(mappedBy = "peList")
+    @JsonIgnore
     private List<UserModel> userModel;
 
 }

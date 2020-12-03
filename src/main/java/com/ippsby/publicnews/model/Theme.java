@@ -1,5 +1,6 @@
 package com.ippsby.publicnews.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -21,5 +22,6 @@ public class Theme implements Serializable {
     private String themeName;
 
     @ManyToMany(mappedBy = "themes")
+    @JsonBackReference
     private List<Pe> peList;
 }

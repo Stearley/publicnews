@@ -1,5 +1,7 @@
 package com.ippsby.publicnews.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -29,7 +31,8 @@ public class News implements Serializable {
 
 
     @ManyToOne//связь новостей и пе(обратная)
-    @JoinColumn(name = "peId")
+    @JoinColumn(name = "peIdSubs")
+    @JsonIgnore
     private Pe pe;
 
 //    @ManyToOne//связь новостей и пользователей(обратная)
