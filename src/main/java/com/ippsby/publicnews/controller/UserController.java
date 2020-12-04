@@ -1,8 +1,9 @@
 package com.ippsby.publicnews.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.ippsby.publicnews.dto.SubscribePe;
+import com.ippsby.publicnews.model.Pe;
 import com.ippsby.publicnews.model.Security;
-import com.ippsby.publicnews.model.Theme;
 import com.ippsby.publicnews.model.UserModel;
 import com.ippsby.publicnews.service.UserService;
 import org.springframework.http.HttpStatus;
@@ -66,8 +67,15 @@ public class UserController {
         return userId;
     }
 
+    @JsonView(Security.Public.class)
+    @PostMapping("/addSubsPe")
+    public ResponseEntity<?>subscribe (@RequestBody SubscribePe subscribePe){
+         userService.subscribe(subscribePe.getUserId(), subscribePe.getPeId());
+         return ResponseEntity.ok().build();
 
+    }
 }
+
 
 
 

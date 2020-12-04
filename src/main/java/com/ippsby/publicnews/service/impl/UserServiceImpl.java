@@ -1,5 +1,6 @@
 package com.ippsby.publicnews.service.impl;
 
+import com.ippsby.publicnews.dto.SubscribePe;
 import com.ippsby.publicnews.model.UserModel;
 import com.ippsby.publicnews.repository.UserRepository;
 import com.ippsby.publicnews.service.UserService;
@@ -32,6 +33,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserModel login(String username, String password) {
         return userRepository.getByUsernameAndPassword(username, password);
+    }
+
+    @Override
+    public void subscribe(long userId, long peId) {
+
     }
 
 
