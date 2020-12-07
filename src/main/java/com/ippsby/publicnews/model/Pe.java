@@ -1,6 +1,5 @@
 package com.ippsby.publicnews.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
@@ -41,9 +40,10 @@ public class Pe implements Serializable {
             @JsonManagedReference
             private List <Theme> themes;
 
-    @ManyToMany(mappedBy = "peList")
     @JsonIgnore
+    @ManyToMany(mappedBy = "peList")
     private List<UserModel> userModel;
+
 
 }
 

@@ -6,12 +6,14 @@ import com.ippsby.publicnews.model.Pe;
 import com.ippsby.publicnews.model.Security;
 import com.ippsby.publicnews.model.UserModel;
 import com.ippsby.publicnews.service.UserService;
+import org.apache.catalina.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping(path = "/users")
@@ -67,11 +69,15 @@ public class UserController {
         return userId;
     }
 
-    @JsonView(Security.Public.class)
-    @PostMapping("/addSubsPe")
-    public ResponseEntity<?>subscribe (@RequestBody SubscribePe subscribePe){
-         userService.subscribe(subscribePe.getUserId(), subscribePe.getPeId());
-         return ResponseEntity.ok().build();
+
+    @PostMapping("/sub")
+    public ResponseEntity subscribe (@RequestBody SubscribePe subscribePe){
+        Pe pe = new Pe();
+        pe.setPeId(subscribePe.getPeId());
+        UserModel userModel = userService.find(subscribePe.getUserId());
+        userModel.addPe(pe);
+        userService.save(userModel);
+        return new ResponseEntity<>(HttpStatus.OK);
 
     }
 }

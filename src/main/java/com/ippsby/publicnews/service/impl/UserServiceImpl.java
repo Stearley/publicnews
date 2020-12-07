@@ -36,8 +36,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void subscribe(long userId, long peId) {
-
+    public UserModel find(long id) {
+        return userRepository.findById(id).get();
     }
 
 

@@ -44,8 +44,6 @@ public class UserModel implements Serializable {
     private List <Pe> peList;
 
 
-
-
     public void addPe(Pe pe) {
         peList.add(pe);
     }
