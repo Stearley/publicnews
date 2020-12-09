@@ -1,11 +1,13 @@
 package com.ippsby.publicnews.service.impl;
 
 import com.ippsby.publicnews.model.Pe;
+import com.ippsby.publicnews.model.Theme;
 import com.ippsby.publicnews.repository.PeRepository;
 import com.ippsby.publicnews.service.PeService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PeServiceImpl implements PeService {
@@ -30,6 +32,10 @@ public class PeServiceImpl implements PeService {
         peRepository.delete(peId);
     }
 
+    @Override
+    public Pe sort (Theme theme) {
+        return peRepository.findByThemes(theme);
+    }
 
     private final PeRepository peRepository;
 }

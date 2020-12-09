@@ -1,6 +1,8 @@
 package com.ippsby.publicnews.controller;
 
 import com.ippsby.publicnews.model.Pe;
+import com.ippsby.publicnews.model.Theme;
+import com.ippsby.publicnews.repository.PeRepository;
 import com.ippsby.publicnews.service.PeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,11 +30,10 @@ public class PeController {
     @PostMapping
     @ResponseBody
     public ResponseEntity<Pe> addNewPE(@RequestBody Pe pe, HttpServletRequest request) {
-        if(Integer.parseInt(request.getHeader("Test")) > 1){
+        if (Integer.parseInt(request.getHeader("Test")) > 1) {
             peService.save(pe);
             return new ResponseEntity<>(HttpStatus.OK);
-        }
-        else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        } else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
     @GetMapping("/{peId}")
@@ -45,18 +46,21 @@ public class PeController {
         if (Integer.parseInt(request.getHeader("Test")) > 1) {
             peService.delete(peId);
             return ResponseEntity.ok().build();
-        }
-        else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        } else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
-    
+
     @PutMapping
     public ResponseEntity<?> updatePe(@RequestBody Pe pe, HttpServletRequest request) {
         if (Integer.parseInt(request.getHeader("Test")) > 4) {
             return new ResponseEntity<>(peService.save(pe), HttpStatus.OK);
-        }
-        else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        } else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
-
-
+    @GetMapping("/sort/{peId}")
+    public Pe sort (@PathVariable Pe peId) {
+        Theme theme = new Theme();
+        peService.sort(theme);
+        return peId;
+    }
+    //        theme.setThemeId(theme.getThemeId());
 }

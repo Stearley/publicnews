@@ -1,11 +1,6 @@
 package com.ippsby.publicnews.controller;
 
-import com.ippsby.publicnews.dto.SubscribePe;
-import com.ippsby.publicnews.dto.ThemeSearch;
-import com.ippsby.publicnews.model.News;
-import com.ippsby.publicnews.model.Pe;
 import com.ippsby.publicnews.model.Theme;
-import com.ippsby.publicnews.model.UserModel;
 import com.ippsby.publicnews.service.ThemeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -53,6 +48,7 @@ public class ThemeController {
         }
         else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
+
     @PutMapping
     public ResponseEntity<?> updateTheme(@RequestBody Theme theme, HttpServletRequest request) {
         if (Integer.parseInt(request.getHeader("Test")) > 4) {
@@ -61,20 +57,7 @@ public class ThemeController {
         else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
-    @GetMapping("/sort/{themeId}")
-    public List<Theme> sorting (@RequestBody ThemeSearch themeSearch) {
 
-    }
-//    @PostMapping("/sub")
-//    public ResponseEntity subscribe (@RequestBody SubscribePe subscribePe){
-//        Pe pe = new Pe();
-//        pe.setPeId(subscribePe.getPeId());
-//        UserModel userModel = userService.find(subscribePe.getUserId());
-//        userModel.addPe(pe);
-//        userService.save(userModel);
-//        return new ResponseEntity<>(HttpStatus.OK);
-//
-//    }
 }
 
 

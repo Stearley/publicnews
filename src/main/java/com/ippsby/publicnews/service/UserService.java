@@ -17,7 +17,7 @@ public interface UserService {
 
     UserModel login(String username, String password);
 
-    UserModel find (long id);
+    UserModel find (long userId);
 }
 
 
