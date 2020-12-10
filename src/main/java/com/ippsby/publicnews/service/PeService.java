@@ -16,5 +16,5 @@ public interface PeService {
 
     void delete(Pe peId);
 
-    Pe sort (Theme themes);
+
 }

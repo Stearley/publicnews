@@ -13,6 +13,6 @@ import java.util.List;
 public interface PeRepository extends JpaRepository<Pe,Long> {
 
 
-     Pe findByThemes(Theme theme);
+
 
 }

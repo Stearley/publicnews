@@ -1,5 +1,6 @@
 package com.ippsby.publicnews.controller;
 
+import com.ippsby.publicnews.model.Pe;
 import com.ippsby.publicnews.model.Theme;
 import com.ippsby.publicnews.service.ThemeService;
 import org.springframework.http.HttpStatus;
@@ -57,8 +58,25 @@ public class ThemeController {
         else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
+//    @GetMapping("/sort")
+//    public Theme sort (@RequestBody Theme theme) {
+//        Pe pe = new Pe();
+//        pe.getPeId();
+//        theme.getThemeId();
+//        return pe;
 
+//        pe.setPeId(subscribePe.getPeId());
+//        UserModel userModel = userService.find(subscribePe.getUserId());
+
+        //        theme.setThemeId(theme.getThemeId());
+        @GetMapping("/sort")
+        public List<Theme> sort() {
+                Pe pe = new Pe();
+                pe.getPeId();
+                return themeService.findAll();
+        }
 }
+
 
 
 

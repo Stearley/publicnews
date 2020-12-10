@@ -1,5 +1,6 @@
 package com.ippsby.publicnews.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Data;
 import org.hibernate.mapping.Set;
@@ -30,12 +31,6 @@ public class UserModel implements Serializable {
     @JsonView(Security.Public.class)
     @Column(name = "password", length = 36)
         private String password;
-
-
-
-//    @OneToMany(mappedBy = "userModel")//связь пользователя и новостей
-//    private List<News> news;
-
 
     @ManyToMany
     @JoinTable(name = "peList",

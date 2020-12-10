@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.management.Query;
+import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
@@ -55,12 +57,12 @@ public class PeController {
             return new ResponseEntity<>(peService.save(pe), HttpStatus.OK);
         } else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
-
-    @GetMapping("/sort/{peId}")
-    public Pe sort (@PathVariable Pe peId) {
-        Theme theme = new Theme();
-        peService.sort(theme);
-        return peId;
+    @GetMapping("/sort")
+    public List<Pe> sort (){
+        String sort = "SELECT * FROM pe_thematics where pe_id order by theme_id asc";
+        Query query = EntityManager.createQuery(sort);
+        List<Pe> queryList = query.getResultList();
+        return peService.findAll();
     }
-    //        theme.setThemeId(theme.getThemeId());
+
 }

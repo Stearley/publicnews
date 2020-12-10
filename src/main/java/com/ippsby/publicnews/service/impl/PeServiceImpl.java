@@ -32,10 +32,5 @@ public class PeServiceImpl implements PeService {
         peRepository.delete(peId);
     }
 
-    @Override
-    public Pe sort (Theme theme) {
-        return peRepository.findByThemes(theme);
-    }
-
     private final PeRepository peRepository;
 }
