@@ -57,12 +57,5 @@ public class PeController {
             return new ResponseEntity<>(peService.save(pe), HttpStatus.OK);
         } else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
-    @GetMapping("/sort")
-    public List<Pe> sort (){
-        String sort = "SELECT * FROM pe_thematics where pe_id order by theme_id asc";
-        Query query = EntityManager.createQuery(sort);
-        List<Pe> queryList = query.getResultList();
-        return peService.findAll();
-    }
 
 }
