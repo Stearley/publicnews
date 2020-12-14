@@ -2,6 +2,7 @@ package com.ippsby.publicnews.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.ippsby.publicnews.dto.NewsDto;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -35,8 +36,15 @@ public class News implements Serializable {
     @JsonIgnore
     private Pe pe;
 
-//    @ManyToOne//связь новостей и пользователей(обратная)
-//    @JoinColumn(name = "userNewsId")
-//    private UserModel userModel;
+    public NewsDto newsDto(){
+        return new NewsDto(
+                newsId,
+                annotation,
+                title,
+                publicationDate,
+                pe
+        );
+    }
+
 
 }

@@ -1,5 +1,6 @@
 package com.ippsby.publicnews.controller;
 
+import com.ippsby.publicnews.dto.PeDto;
 import com.ippsby.publicnews.model.Pe;
 import com.ippsby.publicnews.model.Theme;
 import com.ippsby.publicnews.repository.PeRepository;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.management.Query;
 import javax.persistence.EntityManager;
+import javax.persistence.QueryHint;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
@@ -57,5 +59,6 @@ public class PeController {
             return new ResponseEntity<>(peService.save(pe), HttpStatus.OK);
         } else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
+
 
 }

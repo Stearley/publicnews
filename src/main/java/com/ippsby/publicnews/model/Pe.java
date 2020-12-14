@@ -3,6 +3,7 @@ package com.ippsby.publicnews.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.ippsby.publicnews.dto.PeDto;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -45,6 +46,17 @@ public class Pe implements Serializable {
     @JsonIgnore
     @ManyToMany(mappedBy = "peList")
     private List<UserModel> userModel;
+
+    public PeDto peDto(){
+        return new PeDto(
+                peId,
+                description,
+                fullName,
+                name,
+                news,
+                themes
+        );
+    }
 
 
 }

@@ -1,5 +1,6 @@
 package com.ippsby.publicnews.service;
 
+import com.ippsby.publicnews.dto.ThemeDto;
 import com.ippsby.publicnews.model.Theme;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +15,5 @@ public interface ThemeService {
 
     void delete(Theme themeId);
 
-
+    List<ThemeDto> findAllDto();
 }
