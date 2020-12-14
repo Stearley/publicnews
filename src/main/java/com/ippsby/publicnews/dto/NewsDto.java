@@ -1,15 +1,12 @@
 package com.ippsby.publicnews.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonView;
 import com.ippsby.publicnews.model.Pe;
-import com.ippsby.publicnews.model.Security;
 
 import java.io.Serializable;
 import java.util.Date;
 
 public class NewsDto implements Serializable {
-    public NewsDto(long newsId, String annotation, String title, Date publicationDate, Pe pe) {
+    public NewsDto(long newsId, String annotation, String title, Date publicationDate, PeDto pe) {
         this.newsId = newsId;
         this.annotation = annotation;
         this.publicationDate = publicationDate;
@@ -21,13 +18,14 @@ public class NewsDto implements Serializable {
     private String annotation;
     private Date publicationDate;
     private String title;
-    private Pe pe;
 
-    public Pe getPe() {
+    private PeDto pe;
+
+    public PeDto getPe() {
         return pe;
     }
 
-    public void setPe(Pe pe) {
+    public void setPe(PeDto pe) {
         this.pe = pe;
     }
 

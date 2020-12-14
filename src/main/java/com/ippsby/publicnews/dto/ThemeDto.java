@@ -1,15 +1,10 @@
 package com.ippsby.publicnews.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonView;
-import com.ippsby.publicnews.model.Pe;
-import com.ippsby.publicnews.model.Security;
-
 import java.io.Serializable;
 import java.util.List;
 
 public class ThemeDto implements Serializable {
-    public ThemeDto(long themeId, String themeName, List<Pe> peList){
+    public ThemeDto(long themeId, String themeName, List<PeDto> peList){
         this.themeId = themeId;
         this.themeName = themeName;
         this.peList = peList;
@@ -17,13 +12,13 @@ public class ThemeDto implements Serializable {
 
     private long themeId;
     private String themeName;
-    private List<Pe> peList;
+    private List<PeDto> peList;
 
-    public List<Pe> getPeList() {
+    public List<PeDto> getPeList() {
         return peList;
     }
 
-    public void setPeList(List<Pe> peList) {
+    public void setPeList(List<PeDto> peList) {
         this.peList = peList;
     }
 

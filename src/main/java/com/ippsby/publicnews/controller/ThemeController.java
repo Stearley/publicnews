@@ -60,7 +60,6 @@ public class ThemeController {
         else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
-//    @JsonView(Security.Local.class)
     @GetMapping("/sort")
     public ResponseEntity<?> sort (){
         List<ThemeDto> themeDtoList = themeService.findAllDto();

@@ -1,39 +1,42 @@
 package com.ippsby.publicnews.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonView;
 import com.ippsby.publicnews.model.News;
-import com.ippsby.publicnews.model.Security;
 import com.ippsby.publicnews.model.Theme;
-import com.ippsby.publicnews.model.UserModel;
 
 import java.io.Serializable;
 import java.util.List;
 
 public class PeDto  implements Serializable {
-    public PeDto (long peId, String description, String fullName, String name,List<News> news, List<Theme> themes){
+    public PeDto (long peId, String description, String fullName, String name,List<NewsDto> news, List<ThemeDto> themes){
         this.peId = peId;
         this.description = description;
         this.fullName = fullName;
         this.name = name;
         this.news = news;
-
+        this.themes = themes;
     }
 
     private long peId;
     private String description;
     private String fullName;
     private String name;
-    private List<News> news;
+    private List<NewsDto> news;
+    private List<ThemeDto> themes;
 
 
+    public List<ThemeDto> getThemes() {
+        return themes;
+    }
 
+    public void setThemes(List<ThemeDto> themes) {
+        this.themes = themes;
+    }
 
-    public List<News> getNews() {
+    public List<NewsDto> getNews() {
         return news;
     }
 
-    public void setNews(List<News> news) {
+    public void setNews(List<NewsDto> news) {
         this.news = news;
     }
 
