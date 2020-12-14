@@ -1,6 +1,9 @@
 package com.ippsby.publicnews.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 import com.ippsby.publicnews.model.Pe;
+import com.ippsby.publicnews.model.Security;
 
 import java.io.Serializable;
 import java.util.List;
@@ -11,6 +14,7 @@ public class ThemeDto implements Serializable {
         this.themeName = themeName;
         this.peList = peList;
     }
+
     private long themeId;
     private String themeName;
     private List<Pe> peList;

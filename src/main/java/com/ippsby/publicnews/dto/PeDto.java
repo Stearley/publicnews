@@ -1,7 +1,9 @@
 package com.ippsby.publicnews.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 import com.ippsby.publicnews.model.News;
+import com.ippsby.publicnews.model.Security;
 import com.ippsby.publicnews.model.Theme;
 import com.ippsby.publicnews.model.UserModel;
 
@@ -15,23 +17,17 @@ public class PeDto  implements Serializable {
         this.fullName = fullName;
         this.name = name;
         this.news = news;
-        this.themes = themes;
+
     }
+
     private long peId;
     private String description;
     private String fullName;
     private String name;
     private List<News> news;
-    private List<Theme> themes;
 
 
-    public List<Theme> getThemes() {
-        return themes;
-    }
 
-    public void setThemes(List<Theme> themes) {
-        this.themes = themes;
-    }
 
     public List<News> getNews() {
         return news;

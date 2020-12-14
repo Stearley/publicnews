@@ -2,6 +2,7 @@ package com.ippsby.publicnews.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 import com.ippsby.publicnews.dto.NewsDto;
 import com.ippsby.publicnews.dto.ThemeDto;
 import lombok.Data;
@@ -16,9 +17,11 @@ import java.util.List;
 @Table(name = "theme")
 public class Theme implements Serializable {
 
+
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long themeId;
+
 
     @Column(name = "themeName")
     @NotBlank

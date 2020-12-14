@@ -1,7 +1,8 @@
 package com.ippsby.publicnews.controller;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.ippsby.publicnews.dto.ThemeDto;
-import com.ippsby.publicnews.model.Pe;
+import com.ippsby.publicnews.model.Security;
 import com.ippsby.publicnews.model.Theme;
 import com.ippsby.publicnews.service.ThemeService;
 import org.springframework.http.HttpStatus;
@@ -59,6 +60,7 @@ public class ThemeController {
         else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
+//    @JsonView(Security.Local.class)
     @GetMapping("/sort")
     public ResponseEntity<?> sort (){
         List<ThemeDto> themeDtoList = themeService.findAllDto();
