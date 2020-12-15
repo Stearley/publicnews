@@ -1,6 +1,5 @@
 package com.ippsby.publicnews.service;
 
-import com.ippsby.publicnews.dto.SubscribePe;
 import com.ippsby.publicnews.model.UserModel;
 import org.springframework.stereotype.Service;
 

@@ -16,7 +16,6 @@ public class NewsServiceImpl implements NewsService {
         this.newsRepository = newsRepository;
     }
 
-
     @Override
     public News save(News news) {
        return newsRepository.saveAndFlush(news);
@@ -33,7 +32,6 @@ public class NewsServiceImpl implements NewsService {
     }
 
     private final NewsRepository newsRepository;
-
 
 }
 

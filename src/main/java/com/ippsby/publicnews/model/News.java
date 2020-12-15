@@ -21,11 +21,9 @@ import java.util.stream.Collectors;
 @Table (name = "news")
 public class News implements Serializable {
 
-
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long newsId;
-
 
     @NotBlank
     private String title;
@@ -43,7 +41,13 @@ public class News implements Serializable {
     private Pe pe;
 
     public NewsDto newsDto(){
-
+        return new NewsDto(
+                newsId,
+                annotation,
+                title,
+                publicationDate,
+                pe
+        );
     }
 
 

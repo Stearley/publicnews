@@ -2,6 +2,7 @@ package com.ippsby.publicnews.service.impl;
 
 
 import com.ippsby.publicnews.dto.ThemeDto;
+import com.ippsby.publicnews.model.Pe;
 import com.ippsby.publicnews.model.Theme;
 import com.ippsby.publicnews.repository.ThemeRepository;
 import com.ippsby.publicnews.service.ThemeService;
@@ -39,4 +40,6 @@ public class ThemeServiceImpl implements ThemeService {
     }
 
     private final ThemeRepository themeRepository;
+
+
 }

@@ -18,30 +18,24 @@ import java.util.stream.Collectors;
 @Table(name = "pe")
 public class Pe implements Serializable {
 
-
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long peId;
-
 
     @Column(name = "name")
     @NotBlank
     private String name;
 
-
     @Column(name = "fullname")
     @NotBlank
     private String fullName;
-
 
     @Column(name = "description")
     @NotBlank
     private String description;
 
-
     @OneToMany(mappedBy ="pe")
     private List<News> news;
-
 
     @ManyToMany
     @JoinTable(name = "peThematics",
@@ -49,7 +43,6 @@ public class Pe implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "themeId"))
     @JsonManagedReference
     private List <Theme> themes;
-
 
     @JsonIgnore
     @ManyToMany(mappedBy = "peList")

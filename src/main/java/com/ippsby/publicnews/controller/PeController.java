@@ -1,17 +1,13 @@
 package com.ippsby.publicnews.controller;
 
 import com.ippsby.publicnews.dto.PeDto;
+import com.ippsby.publicnews.dto.ThemeDto;
 import com.ippsby.publicnews.model.Pe;
-import com.ippsby.publicnews.model.Theme;
-import com.ippsby.publicnews.repository.PeRepository;
 import com.ippsby.publicnews.service.PeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.management.Query;
-import javax.persistence.EntityManager;
-import javax.persistence.QueryHint;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 

@@ -16,7 +16,6 @@ public class PeServiceImpl implements PeService {
         this.peRepository = peRepository;
     }
 
-
     @Override
     public List<Pe> findAll() {
         return peRepository.findAll();
@@ -31,8 +30,6 @@ public class PeServiceImpl implements PeService {
     public void delete(Pe peId) {
         peRepository.delete(peId);
     }
-
-
 
     private final PeRepository peRepository;
 }

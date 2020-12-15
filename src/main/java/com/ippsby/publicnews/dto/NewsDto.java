@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class NewsDto implements Serializable {
-    public NewsDto(long newsId, String annotation, String title, Date publicationDate, PeDto pe) {
+    public NewsDto(long newsId, String annotation, String title, Date publicationDate, Pe pe) {
         this.newsId = newsId;
         this.annotation = annotation;
         this.publicationDate = publicationDate;
@@ -19,13 +19,13 @@ public class NewsDto implements Serializable {
     private Date publicationDate;
     private String title;
 
-    private PeDto pe;
+    private Pe pe;
 
-    public PeDto getPe() {
+    public Pe getPe() {
         return pe;
     }
 
-    public void setPe(PeDto pe) {
+    public void setPe(Pe pe) {
         this.pe = pe;
     }
 

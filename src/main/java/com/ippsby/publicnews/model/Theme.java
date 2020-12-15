@@ -36,6 +36,5 @@ public class Theme implements Serializable {
     public ThemeDto themeDto(){
         List<PeDto> peDto = peList.stream().map(Pe::peDto).collect(Collectors.toList());
         return new ThemeDto(themeId, themeName, peDto);
-
     }
 }

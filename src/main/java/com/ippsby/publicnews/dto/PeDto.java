@@ -1,8 +1,5 @@
 package com.ippsby.publicnews.dto;
 
-import com.ippsby.publicnews.model.News;
-import com.ippsby.publicnews.model.Theme;
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -20,6 +17,7 @@ public class PeDto  implements Serializable {
     private String description;
     private String fullName;
     private String name;
+
     private List<NewsDto> news;
     private List<ThemeDto> themes;
 
