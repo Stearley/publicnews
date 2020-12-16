@@ -18,7 +18,7 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public News save(News news) {
-       return newsRepository.saveAndFlush(news);
+        return newsRepository.saveAndFlush(news);
     }
 
     @Override

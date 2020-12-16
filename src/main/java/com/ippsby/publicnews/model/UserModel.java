@@ -2,16 +2,17 @@ package com.ippsby.publicnews.model;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Data;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.List;
 
 
 @Data
 @Entity
 @Table(name = "users" )
-public class UserModel implements Serializable {
+@EntityListeners(AuditingEntityListener.class)
+public class UserModel extends Auditable<String> {
     @JsonView(Security.Local.class)
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -27,7 +28,7 @@ public class UserModel implements Serializable {
 
     @JsonView(Security.Public.class)
     @Column(name = "password", length = 36)
-        private String password;
+    private String password;
 
     @ManyToMany
     @JoinTable(name = "peList",

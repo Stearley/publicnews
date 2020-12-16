@@ -28,11 +28,11 @@ public class NewsController {
     @PostMapping
     @ResponseBody
     public ResponseEntity<News> addNewNews(@RequestBody News news, HttpServletRequest request) {
-       if(Integer.parseInt(request.getHeader("Test"))>1){
-           newsService.save(news);
-           return new ResponseEntity<>(HttpStatus.OK);
-       }
-       else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        if(Integer.parseInt(request.getHeader("Test"))>1){
+            newsService.save(news);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
     @GetMapping("/{newsId}")

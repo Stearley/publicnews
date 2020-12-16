@@ -3,6 +3,8 @@ package com.ippsby.publicnews.controller;
 import com.ippsby.publicnews.dto.PeDto;
 import com.ippsby.publicnews.dto.ThemeDto;
 import com.ippsby.publicnews.model.Pe;
+import com.ippsby.publicnews.model.Theme;
+import com.ippsby.publicnews.model.UserModel;
 import com.ippsby.publicnews.service.PeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -56,5 +58,10 @@ public class PeController {
         } else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
+    @GetMapping("/sorting/{theme}")
+    public ResponseEntity<?> sorting (@PathVariable Theme theme){
+        List<Pe> pes = theme.getPeList();
+        return ResponseEntity.ok(pes);
+    }
 
 }

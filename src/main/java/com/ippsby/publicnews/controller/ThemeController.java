@@ -59,34 +59,7 @@ public class ThemeController {
         }
         else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
-//
-//    @GetMapping("/sort/{theme}")
-//    public ResponseEntity<?> sort (@PathVariable long theme){
-////        List<Pe> pes = theme.getPeList();
-//       // themeService.getByThems(theme)
-//        List<ThemeDto> themeDtoList = themeService.findAllDto();
-//        return ResponseEntity.ok(themeDtoList);
-//    }
 
-//    @GetMapping("/sort/{theme}")
-//    public ResponseEntity<?> sort (@PathVariable long theme){
-////        List<Pe> pes = theme.getPeList();
-//        // themeService.getByThems(theme)
-//        List<ThemeDto> themeDtoList = themeService.findAllDto();
-//        return ResponseEntity.ok(themeDtoList);
-
-//    @GetMapping("/sort/{theme}")
-//    public ResponseEntity<?> sort (@PathVariable long theme){
-////        List<Pe> pes = theme.();
-//        themeService.getByThems(theme);
-//        return ResponseEntity.ok(theme);
-//    }
-
-    @GetMapping("/sort")
-    public ResponseEntity<?> sort (){
-        List<ThemeDto> themeDtoList = themeService.findAllDto();
-        return ResponseEntity.ok(themeDtoList);
-    }
 }
 
 

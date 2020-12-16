@@ -36,7 +36,7 @@ public class UserController {
     public ResponseEntity<UserModel> addNewUser(@RequestBody UserModel userModel, HttpServletRequest request) {
         if(Integer.parseInt(request.getHeader("Test")) > 1){
             userModel.setRoleId(1L);
-           UserModel s = userService.save(userModel);
+            UserModel s = userService.save(userModel);
             return new ResponseEntity<>(HttpStatus.OK);
         }
         else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
