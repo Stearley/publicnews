@@ -1,8 +1,5 @@
 package com.ippsby.publicnews.controller;
 
-import com.ippsby.publicnews.dto.PeDto;
-import com.ippsby.publicnews.dto.ThemeDto;
-import com.ippsby.publicnews.model.Pe;
 import com.ippsby.publicnews.model.Theme;
 import com.ippsby.publicnews.service.ThemeService;
 import org.springframework.http.HttpStatus;

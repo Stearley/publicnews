@@ -1,11 +1,6 @@
 package com.ippsby.publicnews.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonView;
-import com.ippsby.publicnews.dto.NewsDto;
-import com.ippsby.publicnews.dto.PeDto;
-import com.ippsby.publicnews.dto.ThemeDto;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -33,8 +28,5 @@ public class Theme implements Serializable {
     @JsonBackReference
     private List<Pe> peList;
 
-    public ThemeDto themeDto(){
-        List<PeDto> peDto = peList.stream().map(Pe::peDto).collect(Collectors.toList());
-        return new ThemeDto(themeId, themeName, peDto);
-    }
+
 }

@@ -1,6 +1,10 @@
 package com.ippsby.publicnews.controller;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.ippsby.publicnews.dto.NewsStatus;
 import com.ippsby.publicnews.model.News;
+import com.ippsby.publicnews.model.Security;
+import com.ippsby.publicnews.model.UserModel;
 import com.ippsby.publicnews.service.NewsService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,25 +24,30 @@ public class NewsController {
         this.newsService = newsService;
     }
 
+    @JsonView(Security.Local.class)
     @GetMapping
     public List<News> getAllNews() {
         return newsService.findAll();
     }
 
+
     @PostMapping
     @ResponseBody
     public ResponseEntity<News> addNewNews(@RequestBody News news, HttpServletRequest request) {
         if(Integer.parseInt(request.getHeader("Test"))>1){
+            news.setNewsStatus(1L);
             newsService.save(news);
             return new ResponseEntity<>(HttpStatus.OK);
         }
         else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
+    @JsonView(Security.Local.class)
     @GetMapping("/{newsId}")
     public News getNewsById(@PathVariable News newsId) {
         return newsId;
     }
+
 
     @DeleteMapping("/{newsId}")
     public ResponseEntity<?> deleteNewsData(@PathVariable News newsId, HttpServletRequest request) {
@@ -49,6 +58,27 @@ public class NewsController {
         else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
+    @JsonView(Security.Public.class)
+    @PutMapping("/status")
+    public ResponseEntity<?> updateStatus(@RequestBody News news, HttpServletRequest request) {
+        if (Integer.parseInt(request.getHeader("Test")) > 2) {
+            return new ResponseEntity<>(newsService.save(news), HttpStatus.OK);
+        } else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+    }
 
+    @JsonView(Security.Local.class)
+    @PutMapping
+    public ResponseEntity<?> updateNews(@RequestBody News news, HttpServletRequest request) {
+        if (Integer.parseInt(request.getHeader("Test")) > 1) {
+            return new ResponseEntity<>(newsService.save(news), HttpStatus.OK);
+        } else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+    }
+//    public ResponseEntity<?> updateStatus(@RequestBody NewsStatus newsStatus, HttpServletRequest request) {
+//        if (Integer.parseInt(request.getHeader("Test")) > 2) {
+//            newsStatus.setNewsStatus(newsStatus.getNewsStatus());
+//            News news = newsService.find(newsStatus.getNewsId());
+//            return new ResponseEntity<>(newsService.save(news), HttpStatus.OK);
+//        } else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+//    }
 }
 

@@ -78,7 +78,6 @@ public class UserController {
         userModel.addPe(pe);
         userService.save(userModel);
         return new ResponseEntity<>(HttpStatus.OK);
-
     }
 }
 

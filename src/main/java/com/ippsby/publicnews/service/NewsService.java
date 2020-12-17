@@ -1,5 +1,6 @@
 package com.ippsby.publicnews.service;
 
+import com.ippsby.publicnews.dto.NewsStatus;
 import com.ippsby.publicnews.model.News;
 import org.springframework.stereotype.Service;
 
@@ -12,4 +13,6 @@ public interface NewsService {
     News save(News news);
 
     void delete(News newsId);
+
+    News find(long newsId);
 }

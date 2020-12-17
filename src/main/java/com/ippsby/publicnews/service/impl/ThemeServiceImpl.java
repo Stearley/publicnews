@@ -1,8 +1,6 @@
 package com.ippsby.publicnews.service.impl;
 
 
-import com.ippsby.publicnews.dto.ThemeDto;
-import com.ippsby.publicnews.model.Pe;
 import com.ippsby.publicnews.model.Theme;
 import com.ippsby.publicnews.repository.ThemeRepository;
 import com.ippsby.publicnews.service.ThemeService;
@@ -32,11 +30,6 @@ public class ThemeServiceImpl implements ThemeService {
     @Override
     public void delete(Theme themeId) {
         themeRepository.delete(themeId);
-    }
-
-    @Override
-    public List<ThemeDto> findAllDto() {
-        return themeRepository.findAll().stream().map(Theme::themeDto).collect(Collectors.toList());
     }
 
     private final ThemeRepository themeRepository;
