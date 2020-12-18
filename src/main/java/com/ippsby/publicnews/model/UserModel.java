@@ -4,14 +4,16 @@ import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Data;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 
 @Data
 @Entity
 @Table(name = "users" )
-@EntityListeners(AuditingEntityListener.class)
-public class UserModel extends Auditable<String> {
+public class UserModel implements Serializable {
+
+
     @JsonView(Security.Local.class)
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
