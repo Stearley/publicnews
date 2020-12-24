@@ -24,7 +24,7 @@ public class NewsController {
         this.newsService = newsService;
     }
 
-    @JsonView(Security.Local.class)
+    @JsonView(Security.Public.class)
     @GetMapping
     public List<News> getAllNews() {
         return newsService.findAll();
@@ -42,7 +42,7 @@ public class NewsController {
         else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
-    @JsonView(Security.Local.class)
+    @JsonView(Security.Public.class)
     @GetMapping("/{newsId}")
     public News getNewsById(@PathVariable News newsId) {
         return newsId;
@@ -66,19 +66,12 @@ public class NewsController {
         } else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
-    @JsonView(Security.Local.class)
+    @JsonView(Security.Public.class)
     @PutMapping
     public ResponseEntity<?> updateNews(@RequestBody News news, HttpServletRequest request) {
         if (Integer.parseInt(request.getHeader("Test")) > 1) {
             return new ResponseEntity<>(newsService.save(news), HttpStatus.OK);
         } else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
-//    public ResponseEntity<?> updateStatus(@RequestBody NewsStatus newsStatus, HttpServletRequest request) {
-//        if (Integer.parseInt(request.getHeader("Test")) > 2) {
-//            newsStatus.setNewsStatus(newsStatus.getNewsStatus());
-//            News news = newsService.find(newsStatus.getNewsId());
-//            return new ResponseEntity<>(newsService.save(news), HttpStatus.OK);
-//        } else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-//    }
 }
 

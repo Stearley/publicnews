@@ -1,6 +1,8 @@
 package com.ippsby.publicnews.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -12,6 +14,9 @@ import java.util.stream.Collectors;
 @Data
 @Entity
 @Table(name = "theme")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "themeId")
 public class Theme implements Serializable {
 
 
@@ -25,7 +30,7 @@ public class Theme implements Serializable {
     private String themeName;
 
     @ManyToMany(mappedBy = "themes")
-    @JsonBackReference
+//    @JsonBackReference
     private List<Pe> peList;
 
 

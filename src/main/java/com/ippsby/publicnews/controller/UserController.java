@@ -1,6 +1,8 @@
 package com.ippsby.publicnews.controller;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.ippsby.publicnews.dto.SubscribePe;
 import com.ippsby.publicnews.model.Pe;
 import com.ippsby.publicnews.model.Security;

@@ -1,7 +1,6 @@
 package com.ippsby.publicnews.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -13,6 +12,9 @@ import java.util.stream.Collectors;
 @Data
 @Entity
 @Table(name = "pe")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "peId")
 public class Pe implements Serializable {
 
     @Id
@@ -38,7 +40,7 @@ public class Pe implements Serializable {
     @JoinTable(name = "peThematics",
             joinColumns = @JoinColumn(name = "peId"),
             inverseJoinColumns = @JoinColumn(name = "themeId"))
-    @JsonManagedReference
+//    @JsonManagedReference
     private List <Theme> themes;
 
     @JsonIgnore
