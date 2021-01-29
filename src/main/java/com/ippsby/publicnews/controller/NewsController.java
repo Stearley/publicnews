@@ -34,7 +34,7 @@ public class NewsController {
     @PostMapping
     @ResponseBody
     public ResponseEntity<News> addNewNews(@RequestBody News news, HttpServletRequest request) {
-        if(Integer.parseInt(request.getHeader("Test"))>1){
+        if(Integer.parseInt(request.getHeader("roleId"))>1){
             news.setNewsStatus(1L);
             newsService.save(news);
             return new ResponseEntity<>(HttpStatus.OK);
@@ -51,7 +51,7 @@ public class NewsController {
 
     @DeleteMapping("/{newsId}")
     public ResponseEntity<?> deleteNewsData(@PathVariable News newsId, HttpServletRequest request) {
-        if (Integer.parseInt(request.getHeader("Test")) > 1) {
+        if (Integer.parseInt(request.getHeader("roleId")) > 1) {
             newsService.delete(newsId);
             return ResponseEntity.ok().build();
         }
@@ -61,7 +61,7 @@ public class NewsController {
     @JsonView(Security.Public.class)
     @PutMapping("/status")
     public ResponseEntity<?> updateStatus(@RequestBody News news, HttpServletRequest request) {
-        if (Integer.parseInt(request.getHeader("Test")) > 2) {
+        if (Integer.parseInt(request.getHeader("roleId")) > 2) {
             return new ResponseEntity<>(newsService.save(news), HttpStatus.OK);
         } else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
@@ -69,7 +69,7 @@ public class NewsController {
     @JsonView(Security.Public.class)
     @PutMapping
     public ResponseEntity<?> updateNews(@RequestBody News news, HttpServletRequest request) {
-        if (Integer.parseInt(request.getHeader("Test")) > 1) {
+        if (Integer.parseInt(request.getHeader("roleId")) > 1) {
             return new ResponseEntity<>(newsService.save(news), HttpStatus.OK);
         } else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }

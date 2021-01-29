@@ -35,26 +35,34 @@ public class UserController {
 
     @PostMapping
     @ResponseBody
-    public ResponseEntity<UserModel> addNewUser(@RequestBody UserModel userModel, HttpServletRequest request) {
-        if(Integer.parseInt(request.getHeader("Test")) > 1){
-            userModel.setRoleId(1L);
+    public ResponseEntity<UserModel> addNewUser(@RequestBody UserModel userModel) {
+        UserModel s = userService.save(userModel);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+//
+//    @PutMapping
+//    public ResponseEntity<?> updateUser( @RequestBody UserModel userModel, HttpServletRequest request) {
+//        if (Integer.parseInt(request.getHeader("roleId=")) > 4) {
+//            return new ResponseEntity<>(userService.save(userModel), HttpStatus.OK);
+//        } else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+//    }
+    @PutMapping
+    public ResponseEntity<?> updateUser (@RequestBody UserModel userModel,HttpServletRequest request){
+        UserModel d;
+            d = userService.getByRoleId(userModel.getRoleId());
+        if (Integer.parseInt(request.getHeader("Checker")) == d){
             UserModel s = userService.save(userModel);
             return new ResponseEntity<>(HttpStatus.OK);
+
         }
         else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
-    @PutMapping
-    public ResponseEntity<?> updateUser( @RequestBody UserModel userModel, HttpServletRequest request) {
-        if (Integer.parseInt(request.getHeader("Test")) > 4) {
-            return new ResponseEntity<>(userService.save(userModel), HttpStatus.OK);
-        } else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-    }
-
-    @DeleteMapping("/{userId}")
-    public ResponseEntity<?> deleteUser(@PathVariable UserModel userId, HttpServletRequest request) {
-        if (Integer.parseInt(request.getHeader("Test")) > 4) {
-            userService.delete(userId);
+    @DeleteMapping("/{Id}")
+    public ResponseEntity<?> deleteUser(@PathVariable UserModel Id, HttpServletRequest request) {
+        if (Integer.parseInt(request.getHeader("roleId")) > 4) {
+            userService.delete(Id);
             return ResponseEntity.ok().build();
         }
         else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -66,9 +74,9 @@ public class UserController {
         return userService.login(userModel.getUsername(), userModel.getPassword());
     }
 
-    @GetMapping("/{userId}")
-    public UserModel getUserById(@PathVariable UserModel userId) {
-        return userId;
+    @GetMapping("/{Id}")
+    public UserModel getUserById(@PathVariable UserModel Id) {
+        return Id;
     }
 
 
@@ -76,7 +84,7 @@ public class UserController {
     public ResponseEntity subscribe (@RequestBody SubscribePe subscribePe){
         Pe pe = new Pe();
         pe.setPeId(subscribePe.getPeId());
-        UserModel userModel = userService.find(subscribePe.getUserId());
+        UserModel userModel = userService.find(subscribePe.getId());
         userModel.addPe(pe);
         userService.save(userModel);
         return new ResponseEntity<>(HttpStatus.OK);

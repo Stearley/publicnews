@@ -16,17 +16,17 @@ import java.util.List;
 @Table(name = "users" )
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "userId")
+        property = "Id")
 public class UserModel implements Serializable {
 
 
     @JsonView(Security.Local.class)
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private long userId;
+    private long Id;
 
     @JsonView(Security.Local.class)
-    @Column(name = "roleId")
+    @Column(name = "roleId", length = 5, unique = true)
     private long roleId;
 
     @JsonView(Security.Public.class)
@@ -39,7 +39,7 @@ public class UserModel implements Serializable {
 
     @ManyToMany
     @JoinTable(name = "peList",
-            joinColumns = @JoinColumn(name = "userId"),
+            joinColumns = @JoinColumn(name = "Id"),
             inverseJoinColumns = @JoinColumn(name = "peId"))
     private List <Pe> peList;
 

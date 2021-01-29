@@ -29,7 +29,7 @@ public class PeController {
     @PostMapping
     @ResponseBody
     public ResponseEntity<Pe> addNewPE(@RequestBody Pe pe, HttpServletRequest request) {
-        if (Integer.parseInt(request.getHeader("Test")) > 1) {
+        if (Integer.parseInt(request.getHeader("roleId")) > 1) {
             peService.save(pe);
             return new ResponseEntity<>(HttpStatus.OK);
         } else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -42,7 +42,7 @@ public class PeController {
 
     @DeleteMapping("/{peId}")
     public ResponseEntity<?> deletePe(@PathVariable Pe peId, HttpServletRequest request) {
-        if (Integer.parseInt(request.getHeader("Test")) > 1) {
+        if (Integer.parseInt(request.getHeader("roleId")) > 1) {
             peService.delete(peId);
             return ResponseEntity.ok().build();
         } else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -50,7 +50,7 @@ public class PeController {
 
     @PutMapping
     public ResponseEntity<?> updatePe(@RequestBody Pe pe, HttpServletRequest request) {
-        if (Integer.parseInt(request.getHeader("Test")) > 4) {
+        if (Integer.parseInt(request.getHeader("roleId")) > 4) {
             return new ResponseEntity<>(peService.save(pe), HttpStatus.OK);
         } else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }

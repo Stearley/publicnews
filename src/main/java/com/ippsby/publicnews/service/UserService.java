@@ -10,13 +10,15 @@ public interface UserService {
 
     UserModel save(UserModel user);
 
-    void delete(UserModel userId);
+    void delete(UserModel Id);
 
     List<UserModel> findAll();
 
     UserModel login(String username, String password);
 
-    UserModel find (long userId);
+    UserModel find (long Id);
+
+    UserModel getByRoleId(long roleId);
 }
 
 

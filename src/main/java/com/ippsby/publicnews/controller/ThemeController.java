@@ -29,7 +29,7 @@ public class ThemeController {
     @PostMapping
     @ResponseBody
     public ResponseEntity<Theme> addNewTheme(@RequestBody Theme theme, HttpServletRequest request) {
-        if (Integer.parseInt(request.getHeader("Test")) > 1) {
+        if (Integer.parseInt(request.getHeader("roleId")) > 1) {
             themeService.save(theme);
             return new ResponseEntity<>(HttpStatus.OK);
         } else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -42,7 +42,7 @@ public class ThemeController {
 
     @DeleteMapping("/{themeId}")
     public ResponseEntity<?> deleteThemeData(@PathVariable Theme themeId, HttpServletRequest request) {
-        if (Integer.parseInt(request.getHeader("Test")) > 1) {
+        if (Integer.parseInt(request.getHeader("roleId")) > 1) {
             themeService.delete(themeId);
             return ResponseEntity.ok().build();
         }
@@ -51,7 +51,7 @@ public class ThemeController {
 
     @PutMapping
     public ResponseEntity<?> updateTheme(@RequestBody Theme theme, HttpServletRequest request) {
-        if (Integer.parseInt(request.getHeader("Test")) > 4) {
+        if (Integer.parseInt(request.getHeader("roleId")) > 4) {
             return new ResponseEntity<>(themeService.save(theme), HttpStatus.OK);
         }
         else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
