@@ -39,10 +39,6 @@ public class UserServiceImpl implements UserService {
         return userRepository.findById(Id).get();
     }
 
-    @Override
-    public UserModel getByRoleId(long roleId) {
-        return userRepository.getRoleId(roleId);
-    }
 
 
     private final UserRepository userRepository;

@@ -14,5 +14,4 @@ public interface NewsService {
 
     void delete(News newsId);
 
-    News find(long newsId);
 }

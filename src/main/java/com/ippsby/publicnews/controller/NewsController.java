@@ -30,7 +30,6 @@ public class NewsController {
         return newsService.findAll();
     }
 
-
     @PostMapping
     @ResponseBody
     public ResponseEntity<News> addNewNews(@RequestBody News news, HttpServletRequest request) {
@@ -73,5 +72,6 @@ public class NewsController {
             return new ResponseEntity<>(newsService.save(news), HttpStatus.OK);
         } else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
+
 }
 

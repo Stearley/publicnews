@@ -18,7 +18,7 @@ public interface UserService {
 
     UserModel find (long Id);
 
-    UserModel getByRoleId(long roleId);
+
 }
 
 
